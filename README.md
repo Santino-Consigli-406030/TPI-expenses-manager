@@ -5,7 +5,9 @@
 ---
 
 ## 📋 Descripción del Proyecto
+Tiempo de Desarrollo:
 
+Fecha de inicio: 15/09/2024 Fecha Fin: 19/11/2024
 **Expense Manager** es un microservicio orientado a la gestión eficiente de gastos en un entorno compartido, como un consorcio de propietarios, barrios cerrados o countries. Desarrollada en **Java** con **Spring Boot** para el backend, **MySQL** para el manejo de datos, y **Docker** para la contenerización, esta herramienta permite:
 
 - **Registrar y clasificar** diversos tipos de gastos.
