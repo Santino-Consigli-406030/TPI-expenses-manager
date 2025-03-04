@@ -1,0 +1,61 @@
+server:
+  port: "8080"
+app:
+  name: Expenses
+  desc: Demo expense
+  version: 1.0.0
+  url: http://localhost:8080
+  dev-name: Grupo7
+  dev-email: "-"
+  api-owner: ${API-OWNER:http://2w1-villadelcondor.dynns.com:8080/owners-and-plots}
+  api-provider: ${API-PROVIDER:http://2w1-villadelcondor.dynns.com:8080/inventory}
+  api-sanction: ${API-SANCTION:http://2w1-villadelcondor.dynns.com:8080/sanctions}
+  api-filemanager: ${API-FILEMANAGER:http://2w1-villadelcondor.dynns.com:8080/file-manager}
+
+spring:
+  application:
+    name: expenses-manager
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3307/dbexpense}
+    username: ${SPRING_DATASOURCE_USERNAME:gastos}
+    password: ${SPRING_DATASOURCE_USERNAME:123}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        jdbc:
+          batch_size: 50
+          batch_versioned_data: true
+        order_updates: true
+        order_inserts: true
+    show-sql: false
+    defer-datasource-initialization: true
+
+springdoc:
+  api-docs:
+    path: /docs
+    enabled: true
+  swagger-ui:
+    disable-swagger-default-url: true
+    path: /docs-ui
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"  # Exponer los endpoints de health y prometheus
+  endpoint:
+    health:
+      show-details: always  # Mostrar detalles completos en el endpoint de salud
+    prometheus:
+      enabled: true # Habilitar el endpoint de métricas para Prometheus
+
+logging:
+  level:
+    org.hibernate.SQL: ERROR
+    org.hibernate.type.descriptor.sql.BasicBinder: ERROR
+    org.springframework.jdbc.core: ERROR
